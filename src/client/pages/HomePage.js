@@ -2,11 +2,11 @@ import React from 'react';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Home Page Dedicated to JS</h1>
-      <button onClick={() => console.log("Hi")}>Count</button>
+    <div className="center-align" style={{ marginTop: '220px' }}>
+      <h1>Welcome to the React SSR Homepage</h1>
+      <p>An Application to show the benefits Server Side Rendering</p>
     </div>
   )
-}
+};
 
 export default { component: HomePage };

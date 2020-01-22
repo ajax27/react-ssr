@@ -8,7 +8,7 @@ import createStore from './helpers/createStore';
 
 const app = express();
 
-app.use('/api', proxy('https://react-ssr-api.herokuapp.com', {
+app.use('/api', proxy('http://react-ssr-api.herokuapp.com', {
   proxyReqOptDecorator(opts) {  // Just for this app, not required!!!
     opts.headers['x-forwarded-host'] = 'localhost:3000';
     return opts;
@@ -24,7 +24,13 @@ app.get('*', (req, res) => {
   });
 
   Promise.all(promises).then(() => {
-    res.send(renderer(req, store));
+    const context = {};
+    const content = renderer(req, store, context);
+
+    if (context.notFound) {
+      res.status(404);
+    }
+    res.send(content);
   });
 });
 
