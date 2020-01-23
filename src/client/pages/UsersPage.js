@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../actions';
+import { Helmet } from 'react-helmet';
 
 class UsersPage extends Component {
   componentDidMount() {
@@ -13,9 +14,19 @@ class UsersPage extends Component {
     });
   }
 
+  head() {
+    return (
+      <Helmet>
+        <title>{`Ajax27 React SSR | ${this.props.users.length} Users`}</title>
+        <meta property="og:title" content="Ajax27 React SSR | Users" />
+      </Helmet>
+    )
+  }
+
   render() {
     return (
       <div className="center-align" style={{ marginTop: '220px' }}>
+        {this.head()}
         <h2>Here is a list of the Users: </h2>
         <ul>{this.renderUsers()}</ul>
       </div>
