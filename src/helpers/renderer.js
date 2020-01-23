@@ -19,6 +19,7 @@ export default (req, store, context) => {
     <html>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="shortcut icon" href="https://res.cloudinary.com/ajax27/image/upload/v1579789406/favicon_mprps9.png" type="image/x-icon" />
       </head>
       <body>
         <div id="root">${content}</div>
